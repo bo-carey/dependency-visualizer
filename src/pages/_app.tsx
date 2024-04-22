@@ -1,6 +1,23 @@
-import "@/styles/globals.css";
-import type { AppProps } from "next/app";
+import type { AppProps } from 'next/app';
+import Image from 'next/image';
+import backgroundSvg from '@/assets/animated-low-poly-grid.svg';
+import '@mantine/core/styles.css';
+import '@/styles/globals.css';
+import { MantineProvider } from '@mantine/core';
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  return (
+    <MantineProvider>
+      <Image
+        src={backgroundSvg}
+        alt="background image"
+        priority={true}
+        fill={true}
+        quality={100}
+        sizes="100vw"
+        style={{ objectFit: 'cover', backgroundColor: 'black', zIndex: -1 }}
+      />
+      <Component {...pageProps} />
+    </MantineProvider>
+  );
 }
