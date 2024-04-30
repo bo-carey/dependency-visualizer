@@ -87,16 +87,13 @@ export default function GeneratePage({ username }: { username: string }) {
   }, [repos]);
 
   return (
-    <div className="flex flex-col">
-      <h1>Dependencies</h1>
-      <div className="grid grid-cols-[minmax(0,1fr)] items-center gap-2">
-        {dependencies &&
-          Object.entries(dependencies)
-            .sort((a, b) => (b[1].popularity || 0) - (a[1].popularity || 0))
-            .map(([name, { versions, popularity }]) => (
-              <Dependency key={name} name={name} versions={versions} popularity={popularity || 0} />
-            ))}
-      </div>
+    <div className="grid grid-cols-[auto 1fr] items-center gap-2">
+      {dependencies &&
+        Object.entries(dependencies)
+          .sort((a, b) => (b[1].popularity || 0) - (a[1].popularity || 0))
+          .map(([name, { versions, popularity }]) => (
+            <Dependency key={name} name={name} versions={versions} popularity={popularity || 0} />
+          ))}
     </div>
   );
 }

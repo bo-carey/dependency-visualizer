@@ -17,7 +17,9 @@ export default function App({ Component, pageProps }: AppProps) {
         sizes="100vw"
         style={{ objectFit: 'cover', backgroundColor: 'black', zIndex: -1 }}
       />
-      <Component {...pageProps} />
+      <div className="w-screen h-screen overflow-hidden flex items-center">
+        <Component {...pageProps} />
+      </div>
     </MantineProvider>
   );
 }
